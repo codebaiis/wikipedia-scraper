@@ -1,9 +1,12 @@
 # wikipedia-scraper
 
-## Plan
-- use wikipedia page about web scraping as example url to scrape 
-- steps for scraping 
-    - analyze html of page
-    - find patterns in html that correlate to the data you are trying to extract 
-    - use BeautifulSoup to extract data from html
-    - store/utilize data in desired manner 
+## Steps
+- inspect and analyze html of page
+- identify the HTML elements that contain the data you want to extract
+- get the HTML content with requests
+- extract data from the HTML elements with BeautifulSoup
+- utilize data in desired manner 
+
+
+## Example URL
+- https://en.wikipedia.org/wiki/Web_scraping
