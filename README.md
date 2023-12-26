@@ -1,6 +1,12 @@
 # wikipedia-scraper
 
-## Steps
+## Usage
+- run `pip install -r requirements.txt` to install dependencies
+- update `url` variable in `main.py` to the url of the wikipedia page you want to scrape
+- run `python main.py` to scrape the page and store the results into a .txt file
+
+
+## Web scraping steps
 - inspect and analyze html of page
 - identify the HTML elements that contain the data you want to extract
 - get the HTML content with requests
