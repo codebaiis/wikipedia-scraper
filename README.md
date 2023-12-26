@@ -8,5 +8,6 @@
 - utilize data in desired manner 
 
 
-## Example URL
+## Example URLs
 - https://en.wikipedia.org/wiki/Web_scraping
+- https://en.wikipedia.org/wiki/Tampa,_Florida

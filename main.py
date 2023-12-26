@@ -1,9 +1,10 @@
 import logging
 import os 
 from pathlib import Path
+from typing import List
 
 import requests
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup, Tag, ResultSet
 from requests import Response
 
 
@@ -13,7 +14,7 @@ from requests import Response
 
 class Scraper():
     
-    def store_page_contents_from_url(self, url: str) -> str:
+    def store_content_from_url_to_file(self, url: str) -> str:
         html: bytes = self._get_raw_html(url)
         soup: BeautifulSoup = BeautifulSoup(html, 'html.parser')
         page_title: str = self._get_page_title(soup)
@@ -21,7 +22,6 @@ class Scraper():
         file_path: str = self._store_content_text_to_file(page_title, content_text)
         logging.info(f'    - Page contents from {url} stored to {file_path}')
         return file_path
-        
         
         
     def _get_raw_html(self, url: str) -> bytes:
@@ -40,8 +40,11 @@ class Scraper():
     
     
     def _get_content_text(self, soup: BeautifulSoup) -> str:
-        content_div: Tag = soup.find(class_="mw-parser-output")
-        content_text: str = content_div.text
+        content_text: str = ''
+        content_divs: ResultSet = soup.find_all(class_="mw-parser-output")
+        for div in content_divs:
+            div_text: str = div.text
+            content_text = f'{content_text}\n\n{div_text}'
         return content_text
     
     
@@ -58,14 +61,6 @@ class Scraper():
         with open(file_path, 'w') as f:
             f.write(content_text)
         return file_path
-    
-    
-    def _get_links(self, html: bytes) -> list:
-        soup: BeautifulSoup = BeautifulSoup(html, 'html.parser')
-        links: list = soup.find_all('a')
-        for link in links[:5]:
-            print(link.get('href'))
-        return links
         
         
         
@@ -73,4 +68,4 @@ class Scraper():
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     url: str = 'https://en.wikipedia.org/wiki/Web_scraping'
-    Scraper().store_page_contents_from_url(url)
+    Scraper().store_content_from_url_to_file(url)
