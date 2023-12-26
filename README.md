@@ -9,8 +9,8 @@
 ## Web scraping steps
 - inspect and analyze html of page
 - identify the HTML elements that contain the data you want to extract
-- get the HTML content with requests
-- extract data from the HTML elements with BeautifulSoup
+- get the HTML content with `requests` library
+- extract data from the HTML elements with `BeautifulSoup` library
 - utilize data in desired manner 
 
 
