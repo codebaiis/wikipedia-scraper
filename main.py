@@ -1,13 +1,10 @@
 import logging
 import os 
 from pathlib import Path
-from typing import List
 
 import requests
 from bs4 import BeautifulSoup, Tag, ResultSet
 from requests import Response
-
-
 
 
 
